@@ -84,6 +84,13 @@
 <version>1.8</version>
 <scope>compile</scope>
 </dependency>
+
+<dependency>
+ <groupId>org.jgrapht</groupId>
+  <artifactId>jgrapht-core</artifactId>
+  <version>1.0.0</version>
+</dependency>
+
 </dependencies>
 
 </project>
