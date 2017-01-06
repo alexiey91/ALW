@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="it.unimi.dsi.webgraph.algo.ParallelBreadthFirstVisit"/>
+<fullyQualifiedTypeName name="it.unimi.dsi.webgraph.examples.OutdegreeStats"/>
+<fullyQualifiedTypeName name="it.unimi.dsi.webgraph.algo.EliasFanoCumulativeOutdegreeList"/>
+<fullyQualifiedTypeName name="it.unimi.dsi.webgraph.jung.JungAdapter"/>
+<fullyQualifiedTypeName name="it.unimi.dsi.webgraph.ImmutableGraph"/>
+<fullyQualifiedTypeName name="it.unimi.dsi.webgraph.Transform"/>
+<fullyQualifiedTypeName name="it.uniroma2.algoritmi.web.Bridge"/>
+<fullyQualifiedTypeName name="it.unimi.dsi.webgraph.Stats"/>
+<fullyQualifiedTypeName name="it.unimi.dsi.logging.ProgressLogger"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.jgrapht.Graph"/>
+<fullyQualifiedTypeName name="org.jgrapht.graph.DefaultDirectedGraph"/>
+<fullyQualifiedTypeName name="org.jgrapht.alg.ConnectivityInspector"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="org.jgrapht.graph.DefaultEdge"/>
+<fullyQualifiedTypeName name="org.jgrapht.DirectedGraph"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+</qualifiedTypeNameHistroy>
