@@ -3,9 +3,8 @@ package it.uniroma2.algoritmi.web;
 import it.unimi.dsi.logging.ProgressLogger;
 import it.unimi.dsi.webgraph.ArcListASCIIGraph;
 import it.unimi.dsi.webgraph.ImmutableGraph;
-import it.unimi.dsi.webgraph.Transform;
 import it.unimi.dsi.webgraph.algo.ConnectedComponents;
-import it.unimi.dsi.webgraph.algo.HyperBall;
+import it.unimi.dsi.webgraph.algo.GeometricCentralities;
 import it.unimi.dsi.webgraph.algo.NeighbourhoodFunction;
 import it.unimi.dsi.webgraph.algo.ParallelBreadthFirstVisit;
 import it.unimi.dsi.webgraph.algo.StronglyConnectedComponents;
@@ -59,23 +58,33 @@ public class componentiConnesse {
 
 		 }
 		
-	//	 Bridge b = new Bridge();
-		// b.numberOfBridge(graph1);
-		 int rand = (int)(Math.random()*10);
-		 HyperBall ball = new HyperBall(graph1, null, 25, new ProgressLogger() );
-		 ball.init();
-		 ball.iterate();
-		 
-		 System.out.println("ball: "+ball.discountFunction);
-		 System.out.println("ball: "+ball.sumOfDistances);
-		 System.out.println("ball: "+ball.neighbourhoodFunction);
-		 System.out.println("ball:"+ball.registers().toString());
-		 ball.close();
+		
+		 List<Double> ListOfneighbourdhood = new ArrayList<Double>();
+		 neighbourhood prova = new neighbourhood();
+		 ListOfneighbourdhood = prova.computeNeighbour(graph1, 22);
+		 System.out.println("Lista vicinanza: "+ListOfneighbourdhood);
+		 diameter d = new diameter();
+		 double diameter = d.effectiveDiamete(0.9, ListOfneighbourdhood);
+		 System.out.println("effective diameter: "+ diameter);
 		 NeighbourhoodFunction n = new NeighbourhoodFunction();
-		double [] x = n.compute(graph1);
+		long [] x = n.computeExact(graph1, 0, new ProgressLogger());
 		for ( int i=0 ; i< x.length;i++)
 		 System.out.println("x["+i+"]: "+x[i] );
-		 
+		double  diametro =n.effectiveDiameter(0.9, n.compute(graph1,0,new ProgressLogger()));
+		System.out.println("DIametro:"+diametro);
+		
+		
+	GeometricCentralities g= new	GeometricCentralities(graph1, new ProgressLogger());
+		
+		try {
+			 g.compute() ;
+			 double[] closeness = g.closeness;
+			 for(int i =0 ; i< closeness.length;i++)
+			 System.out.println("closeness: "+closeness[i]);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

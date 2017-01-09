@@ -19,7 +19,8 @@ import org.jgrapht.graph.DefaultEdge;
 public class calcoloBridge {
 	private static List<Integer> Listanodi = new ArrayList<Integer>();
 
-	private static String path = "C:\\Users\\alessandro\\Desktop\\bridge.edges";
+	private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\Kapferer-Tailor-Shop_Multiplex_Social\\Dataset\\TailorShop.edges";
+	//private static String path = "C:\\Users\\alessandro\\Desktop\\bridge.edges";
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -80,15 +81,20 @@ public class calcoloBridge {
 		long timerStrong = dopoStrong.getTime()-primaStrong.getTime();
 		System.out.println("Tempo di esecuzione strong bridge: "+ timerStrong+"ms");
 		
-		
+		Date primaArtweak = new Date();
 		List<String> ArticulationPoint =  TestnumberOfWeaklyArticulationPoint(grafo, Listanodi,
 				componentiConnesse);
 		System.out.println("Numero di Punti di articolazione debole:"+ArticulationPoint);
-		
+		Date dopoArtweak = new Date();
+		long timerArtweak = dopoArtweak.getTime()-primaArtweak.getTime();
+		System.out.println("Tempo di esecuzionw weak Articulation: "+timerArtweak+"ms");
+		Date primaArtstrong = new Date();
 		List<String> StrongArticulationPoint =  TestnumberOfStrongArticulationPoint(grafo, Listanodi,
 				finder.stronglyConnectedSets().size());
 		System.out.println("Numero di Punti di articolazione debole:"+StrongArticulationPoint);
-				
+		Date dopoArtstrong = new Date();
+		long timerArtstrong = dopoArtstrong.getTime()-primaArtstrong.getTime();
+		System.out.println("Tempo di esecuzione strong Articulation Point: "+ timerArtstrong+"ms");
 	}
 
 	private static List<String> numberOfWeaklyBridge(
@@ -106,7 +112,7 @@ public class calcoloBridge {
 						.toString())) {
 					probablyBridge = grafo.getEdge(nodi.get(i).toString(),
 							nodi.get(j).toString()).toString();
-					System.out.println("probablyBridge" + probablyBridge);
+			//		System.out.println("probablyBridge" + probablyBridge);
 					grafo.removeEdge(nodi.get(i).toString(), nodi.get(j)
 							.toString());
 					ConnectivityInspector<String, DefaultEdge> inspector = new ConnectivityInspector<String, DefaultEdge>(
@@ -117,7 +123,7 @@ public class calcoloBridge {
 				//	System.out.println("Lista COMPONENTI CONNESSE:"+ inspector.connectedSets());
 				//		System.out.println("# componenti connesse:"+ inspector.connectedSets().size());
 					if (inspector.connectedSets().size() > start_componentiConnesse) {
-	
+						System.out.println("True weakbridge position:"+i);
 						grafo.addEdge(nodi.get(i).toString(), nodi.get(j)
 								.toString());
 					/*	System.out.println("GRAFO con Nodo RIaggiunto: "
@@ -162,7 +168,7 @@ public class calcoloBridge {
 					
 					
 						if (finder.stronglyConnectedSets().size() > start_componentiConnesse) {
-	
+							System.out.println("True strongbridge position:"+i);
 						grafo.addEdge(nodi.get(i).toString(), nodi.get(j)
 								.toString());
 					/*	System.out.println("GRAFO con Nodo RIaggiunto: "
@@ -182,58 +188,57 @@ public class calcoloBridge {
 	}
 
 	
-	private static List<String> numberOfWeaklyArticulationPoint(
-			DirectedGraph<String, DefaultEdge> grafo, List<Integer> nodi,
-			int start_componentiConnesse) {
-		
-		List<String> setOfArticulationPoint = new ArrayList<String>();
-		
-		String probablyPoint;
-		
-		nodi = new ArrayList<Integer>(new HashSet<Integer>(nodi));
-		
-		DirectedGraph<String, DefaultEdge> tempo = new DefaultDirectedGraph<String, DefaultEdge>(
-				DefaultEdge.class);
-		
-		for(int i=0 ; i< nodi.size();i++){
-			System.out.println("Grafo prima del for: "+grafo);
-			System.out.println("Vertice : "+nodi.get(i).toString());
-			tempo = grafo;
-			System.out.println("Temp prima del for: "+tempo);
-			if(tempo.containsVertex(nodi.get(i).toString())){
-				probablyPoint= nodi.get(i).toString();
-				
-				
-				tempo.removeVertex(nodi.get(i).toString());
-
-				ConnectivityInspector<String, DefaultEdge> inspector = new ConnectivityInspector<String, DefaultEdge>(
-						tempo);
-				System.out.println("GRAFO Temp senza Nodo: " + tempo );
-		
-				
-				System.out.println("Lista COMPONENTI CONNESSE senza Il Vertice rimosso :"+ inspector.connectedSets());
-					System.out.println("# componenti connesse:"+ inspector.connectedSets().size());
-				if (inspector.connectedSets().size() > start_componentiConnesse) {
-					tempo =grafo;
-					//grafo.addVertex(nodi.get(i).toString());
-					/*System.out.println("GRAFO con Nodo RIaggiunto: "
-							+ grafo);*/
-					
-					System.out.println("dentro if 2: "
-							+ inspector.connectedSets().size());
-					setOfArticulationPoint.add(probablyPoint);
-				}else {System.out.println("No Articolation point at position:"+i);
-					tempo= new  DefaultDirectedGraph<String, DefaultEdge>(
-							DefaultEdge.class);
-					System.out.println("TEMP:"+tempo);
-					}
-			}
-
-			
-			}
-		
-			
-		return setOfArticulationPoint;	}
+//	private static List<String> numberOfWeaklyArticulationPoint(
+//			DirectedGraph<String, DefaultEdge> grafo, List<Integer> nodi,
+//			int start_componentiConnesse) {
+//		
+//		List<String> setOfArticulationPoint = new ArrayList<String>();
+//		
+//		String probablyPoint;
+//		
+//		nodi = new ArrayList<Integer>(new HashSet<Integer>(nodi));
+//		
+//		DirectedGraph<String, DefaultEdge> tempo = new DefaultDirectedGraph<String, DefaultEdge>(
+//				DefaultEdge.class);
+//		
+//		for(int i=0 ; i< nodi.size();i++){
+//		//	System.out.println("Grafo prima del for: "+grafo);
+//		//	System.out.println("Vertice : "+nodi.get(i).toString());
+//			tempo = grafo;
+//		//	System.out.println("Temp prima del for: "+tempo);
+//			if(tempo.containsVertex(nodi.get(i).toString())){
+//				probablyPoint= nodi.get(i).toString();
+//				
+//				
+//				tempo.removeVertex(nodi.get(i).toString());
+//
+//				ConnectivityInspector<String, DefaultEdge> inspector = new ConnectivityInspector<String, DefaultEdge>(
+//						tempo);
+//			//	System.out.println("GRAFO Temp senza Nodo: " + tempo );
+//		
+//				
+//			//	System.out.println("Lista COMPONENTI CONNESSE senza Il Vertice rimosso :"+ inspector.connectedSets());
+//			//		System.out.println("# componenti connesse:"+ inspector.connectedSets().size());
+//				if (inspector.connectedSets().size() > start_componentiConnesse) {
+//					tempo =grafo;
+//					//grafo.addVertex(nodi.get(i).toString());
+//					/*System.out.println("GRAFO con Nodo RIaggiunto: "
+//							+ grafo);*/
+//					
+//		//			System.out.println("dentro if 2: "	+ inspector.connectedSets().size());
+//					setOfArticulationPoint.add(probablyPoint);
+//				}else {//System.out.println("No Articolation point at position:"+i);
+//					tempo= new  DefaultDirectedGraph<String, DefaultEdge>(
+//							DefaultEdge.class);
+//					//System.out.println("TEMP:"+tempo);
+//					}
+//			}
+//
+//			
+//			}
+//		
+//			
+//		return setOfArticulationPoint;	}
 
 	
 	
@@ -253,19 +258,20 @@ public class calcoloBridge {
 						
 				if(grafo.containsVertex(nodi.get(i).toString())){
 				setOfEdges.add(grafo.edgesOf(nodi.get(i).toString()).toString());
-				System.out.println("setof edges:"+setOfEdges);
+			//	System.out.println("setof edges:"+setOfEdges);
 			//	System.out.println("set of edges in pos:"+i+"= "+ setOfEdges.get(i).trim().substring(1,setOfEdges.get(i).trim().length()-1 ));
 				ListofEdges=parsedListEdges(setOfEdges.get(i).trim().substring(1,setOfEdges.get(i).trim().length()-1 ));
-				System.out.println("LISTOFEDGES"+ListofEdges);
+			//	System.out.println("LISTOFEDGES"+ListofEdges);
 				probablyPoint = nodi.get(i).toString();
 				grafo.removeVertex(nodi.get(i).toString());
 				
 				
 				ConnectivityInspector<String, DefaultEdge> inspector = new ConnectivityInspector<String, DefaultEdge>(
 						grafo);
-				System.out.println("inspector:"+inspector.connectedSets());
+			//	System.out.println("inspector:"+inspector.connectedSets());
 				if (inspector.connectedSets().size() > start_componentiConnesse) {
-				System.out.println("dentro if ispector at time: "+i);
+			//	System.out.println("dentro if ispector at time: "+i);
+					System.out.println("True wealpoint position:"+i);
 					grafo.addVertex(probablyPoint);
 					for(int j=0; j< ListofEdges.size();j++){
 						if(j%2!=0){
@@ -278,10 +284,9 @@ public class calcoloBridge {
 					/*System.out.println("GRAFO con Nodo RIaggiunto: "
 							+ grafo);*/
 					
-					System.out.println("dentro if 2: "
-							+ inspector.connectedSets().size());
+		//			System.out.println("dentro if 2: "							+ inspector.connectedSets().size());
 					setOfArticulationPoint.add(probablyPoint);
-				}else {System.out.println("No Articolation point at position:"+i);
+				}else {//System.out.println("No Articolation point at position:"+i);
 				grafo.addVertex(probablyPoint);
 				
 				for(int j=0; j< ListofEdges.size();j++){
@@ -317,19 +322,20 @@ public class calcoloBridge {
 						
 				if(grafo.containsVertex(nodi.get(i).toString())){
 				setOfEdges.add(grafo.edgesOf(nodi.get(i).toString()).toString());
-				System.out.println("setof edges:"+setOfEdges);
+			//	System.out.println("setof edges:"+setOfEdges);
 			//	System.out.println("set of edges in pos:"+i+"= "+ setOfEdges.get(i).trim().substring(1,setOfEdges.get(i).trim().length()-1 ));
 				ListofEdges=parsedListEdges(setOfEdges.get(i).trim().substring(1,setOfEdges.get(i).trim().length()-1 ));
-				System.out.println("LISTOFEDGES"+ListofEdges);
+				//System.out.println("LISTOFEDGES"+ListofEdges);
 				probablyPoint = nodi.get(i).toString();
 				grafo.removeVertex(nodi.get(i).toString());
 				
 				
 				KosarajuStrongConnectivityInspector<String,DefaultEdge>finder = new KosarajuStrongConnectivityInspector<String,DefaultEdge>( grafo);
 
-				System.out.println("finder:"+finder.stronglyConnectedSets());
+			//	System.out.println("finder:"+finder.stronglyConnectedSets());
 				if (finder.stronglyConnectedSets().size() > start_componentiConnesse) {
-				System.out.println("dentro if finder at time: "+i);
+			//	System.out.println("dentro if finder at time: "+i);
+					System.out.println("True strongpoint position:"+i);
 					grafo.addVertex(probablyPoint);
 					for(int j=0; j< ListofEdges.size();j++){
 						if(j%2!=0){
@@ -342,10 +348,9 @@ public class calcoloBridge {
 					/*System.out.println("GRAFO con Nodo RIaggiunto: "
 							+ grafo);*/
 					
-					System.out.println("dentro if 2 finder: "
-							+ finder.stronglyConnectedSets().size());
+				//	System.out.println("dentro if 2 finder: "	+ finder.stronglyConnectedSets().size());
 					setOfArticulationPoint.add(probablyPoint);
-				}else {System.out.println("No Strong Articolation point at position:"+i);
+				}else {//System.out.println("No Strong Articolation point at position:"+i);
 				grafo.addVertex(probablyPoint);
 				
 				for(int j=0; j< ListofEdges.size();j++){
