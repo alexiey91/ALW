@@ -19,8 +19,9 @@ public class neighbourhood {
 		 @SuppressWarnings("unused")
 		int rand = (int)(Math.random()*10);
 		 @SuppressWarnings("resource")
-		HyperBall ball = new HyperBall(graph, Transform.transpose(graph), numberOfRegister, new ProgressLogger(),0,0,0,false);
-		ball.run(graph.numNodes());
+		HyperBall ball = new HyperBall(graph, Transform.transpose(graph),20, new ProgressLogger(),0,0,0,false);
+	//	ball.init();
+		 ball.run(graph.numNodes());
 		List<Double> Testneighbourhood = new ArrayList<Double>() ;
 		 Testneighbourhood.addAll(ball.neighbourhoodFunction);
 		 

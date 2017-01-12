@@ -8,9 +8,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.jgrapht.DirectedGraph;
+import org.jgrapht.alg.AllDirectedPaths;
 import org.jgrapht.alg.ConnectivityInspector;
 import org.jgrapht.alg.KosarajuStrongConnectivityInspector;
 import org.jgrapht.graph.DefaultDirectedGraph;
@@ -19,9 +19,12 @@ import org.jgrapht.graph.DefaultEdge;
 public class calcoloBridge {
 	private static List<Integer> Listanodi = new ArrayList<Integer>();
 
-	private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\Kapferer-Tailor-Shop_Multiplex_Social\\Dataset\\TailorShop.edges";
+	//private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\Kapferer-Tailor-Shop_Multiplex_Social\\Dataset\\TailorShop.edges";
 	//private static String path = "C:\\Users\\alessandro\\Desktop\\bridge.edges";
-
+	//private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\CKM-Physicians-Innovation_Multiplex_Social\\Dataset\\CKM.edges";
+	//private static String path ="C:\\Users\\alessandro\\Desktop\\ALW\\Lazega-Law-Firm_Multiplex_Social\\Dataset\\Lazega.edges";
+	//private static String path ="C:\\Users\\alessandro\\Desktop\\ALW\\Krackhardt-High-Tech_Multiplex_Social\\Dataset\\Krackhardt.edges";
+	private static String path = "C:\\Users\\alessandro\\Desktop\\simone.edges";
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
@@ -95,6 +98,12 @@ public class calcoloBridge {
 		Date dopoArtstrong = new Date();
 		long timerArtstrong = dopoArtstrong.getTime()-primaArtstrong.getTime();
 		System.out.println("Tempo di esecuzione strong Articulation Point: "+ timerArtstrong+"ms");
+		
+		
+		
+		
+		
+		
 	}
 
 	private static List<String> numberOfWeaklyBridge(

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class componentiConnesse {
 
-	public static void main(String arg[]) throws IOException ,UnsupportedOperationException{
+	public static void main(String arg[]) throws IOException ,UnsupportedOperationException, InterruptedException{
 		// TODO Auto-generated method stub
 		
 		
@@ -61,7 +61,7 @@ public class componentiConnesse {
 		
 		 List<Double> ListOfneighbourdhood = new ArrayList<Double>();
 		 neighbourhood prova = new neighbourhood();
-		 ListOfneighbourdhood = prova.computeNeighbour(graph1, 22);
+		 ListOfneighbourdhood = prova.computeNeighbour(graph1, 10);
 		 System.out.println("Lista vicinanza: "+ListOfneighbourdhood);
 		 diameter d = new diameter();
 		 double diameter = d.effectiveDiamete(0.9, ListOfneighbourdhood);
@@ -85,6 +85,10 @@ public class componentiConnesse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		betweenness between = new betweenness();
+		System.out.println("List of betweenness: "+ between.computeBetweenness(graph1));
+		System.out.println("List of normalized betweenness: "+between.normalize(between.computeBetweenness(graph1),nodi));
 	}
 
 }
