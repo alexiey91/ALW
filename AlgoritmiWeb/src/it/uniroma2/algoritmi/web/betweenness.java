@@ -46,7 +46,7 @@ public class betweenness {
 		double temp =0;
 		for(int i= 0 ; i< centrality.size() ; i++){
 			temp = centrality.get(i)/((nodi-1)*(nodi-2)/2);
-			System.out.println("Per il vertice :"+i+" Temp= "+temp);
+			
 			test.add(i, temp);
 		}
 		

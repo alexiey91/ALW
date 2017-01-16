@@ -4,7 +4,6 @@ import it.unimi.dsi.logging.ProgressLogger;
 import it.unimi.dsi.webgraph.ArcListASCIIGraph;
 import it.unimi.dsi.webgraph.ImmutableGraph;
 import it.unimi.dsi.webgraph.algo.ConnectedComponents;
-import it.unimi.dsi.webgraph.algo.GeometricCentralities;
 import it.unimi.dsi.webgraph.algo.NeighbourhoodFunction;
 import it.unimi.dsi.webgraph.algo.ParallelBreadthFirstVisit;
 import it.unimi.dsi.webgraph.algo.StronglyConnectedComponents;
@@ -74,21 +73,19 @@ public class componentiConnesse {
 		System.out.println("DIametro:"+diametro);
 		
 		
-	GeometricCentralities g= new	GeometricCentralities(graph1, new ProgressLogger());
-		
-		try {
-			 g.compute() ;
-			 double[] closeness = g.closeness;
-			 for(int i =0 ; i< closeness.length;i++)
-			 System.out.println("closeness: "+closeness[i]);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	closeness closeness = new closeness();
+	
+	System.out.println("Set Of Closeness: "+closeness.computeCloseness(graph1));
 		
 		betweenness between = new betweenness();
 		System.out.println("List of betweenness: "+ between.computeBetweenness(graph1));
 		System.out.println("List of normalized betweenness: "+between.normalize(between.computeBetweenness(graph1),nodi));
+	
+		//System.out.println("elenco:"+ConnectedComponents.getLargestComponent(graph1, 0, new ProgressLogger()));
+		degreeCentrality degreecent = new degreeCentrality();
+		
+		System.out.println("Degree Centrality of graph:"+ degreecent.computeDegreeCentrality(graph1));
+		
 	}
 
 }
