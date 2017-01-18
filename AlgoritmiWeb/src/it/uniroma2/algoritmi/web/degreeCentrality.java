@@ -18,8 +18,8 @@ public class degreeCentrality {
 		int maxGraphDegree = maxDegree(graph);
 		System.out.println("maxDegree:"+maxGraphDegree);
 		double denominator = 0;
-		denominator= computeDegreeSubgraph(graph);
-	//	denominator = (graph.numNodes()-1)*(graph.numNodes()-2);
+		//denominator= computeDegreeSubgraph(graph);
+		denominator = (graph.numNodes()-1)*(graph.numNodes()-2);
 		
 		for (int i=0 ; i< graph.numNodes();i++){
 			sum=sum + (maxGraphDegree - graph.outdegree(i));
@@ -36,7 +36,8 @@ public class degreeCentrality {
 	
 	double sum =0;
 	ConnectedComponents.compute(graph, 0, null);
-	System.out.println(ConnectedComponents.compute(graph, 0, null).numberOfComponents);
+	//System.out.println(ConnectedComponents.compute(graph, 0, null).numberOfComponents);
+	//System.out.println(ConnectedComponents.compute(graph, 0, null).component[36]);
 		ImmutableGraph maximumSubgraph= ConnectedComponents.getLargestComponent(graph, 0, null);
 	System.out.println("maximumSubgraph:"+maximumSubgraph);
 		int maxSubGraphDegree = maxDegree(maximumSubgraph);

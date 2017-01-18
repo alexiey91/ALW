@@ -3,6 +3,7 @@ package it.uniroma2.algoritmi.web;
 import it.unimi.dsi.logging.ProgressLogger;
 import it.unimi.dsi.webgraph.ArcListASCIIGraph;
 import it.unimi.dsi.webgraph.ImmutableGraph;
+import it.unimi.dsi.webgraph.ImmutableSubgraph;
 import it.unimi.dsi.webgraph.algo.ConnectedComponents;
 import it.unimi.dsi.webgraph.algo.NeighbourhoodFunction;
 import it.unimi.dsi.webgraph.algo.ParallelBreadthFirstVisit;
@@ -58,34 +59,37 @@ public class componentiConnesse {
 		 }
 		
 		
-		 List<Double> ListOfneighbourdhood = new ArrayList<Double>();
-		 neighbourhood prova = new neighbourhood();
-		 ListOfneighbourdhood = prova.computeNeighbour(graph1, 10);
-		 System.out.println("Lista vicinanza: "+ListOfneighbourdhood);
-		 diameter d = new diameter();
-		 double diameter = d.effectiveDiamete(0.9, ListOfneighbourdhood);
-		 System.out.println("effective diameter: "+ diameter);
-		 NeighbourhoodFunction n = new NeighbourhoodFunction();
-		long [] x = n.computeExact(graph1, 0, new ProgressLogger());
-		for ( int i=0 ; i< x.length;i++)
-		 System.out.println("x["+i+"]: "+x[i] );
-		double  diametro =n.effectiveDiameter(0.9, n.compute(graph1,0,new ProgressLogger()));
-		System.out.println("DIametro:"+diametro);
-		
-		
-	closeness closeness = new closeness();
-	
-	System.out.println("Set Of Closeness: "+closeness.computeCloseness(graph1));
-		
-		betweenness between = new betweenness();
+//		 List<Double> ListOfneighbourdhood = new ArrayList<Double>();
+//		 neighbourhood prova = new neighbourhood();
+//		 ListOfneighbourdhood = prova.computeNeighbour(graph1, 10);
+//		 System.out.println("Lista vicinanza: "+ListOfneighbourdhood);
+//		 diameter d = new diameter();
+//		 double diameter = d.effectiveDiamete(0.9, ListOfneighbourdhood);
+//		 System.out.println("effective diameter: "+ diameter);
+//		 NeighbourhoodFunction n = new NeighbourhoodFunction();
+//		long [] x = n.computeExact(graph1, 0, new ProgressLogger());
+//		for ( int i=0 ; i< x.length;i++)
+//		 System.out.println("x["+i+"]: "+x[i] );
+//		double  diametro =n.effectiveDiameter(0.9, n.compute(graph1,0,new ProgressLogger()));
+//		System.out.println("DIametro:"+diametro);
+//		
+//		
+//	closeness closeness = new closeness();
+//	
+//	System.out.println("Set Of Closeness: "+closeness.computeCloseness(graph1));
+//		
+	betweenness between = new betweenness();
 		System.out.println("List of betweenness: "+ between.computeBetweenness(graph1));
 		System.out.println("List of normalized betweenness: "+between.normalize(between.computeBetweenness(graph1),nodi));
+//	
+//		//System.out.println("elenco:"+ConnectedComponents.getLargestComponent(graph1, 0, new ProgressLogger()));
+//		degreeCentrality degreecent = new degreeCentrality();
+//		
+//		System.out.println("Degree Centrality of graph:"+ degreecent.computeDegreeCentrality(graph1));
 	
-		//System.out.println("elenco:"+ConnectedComponents.getLargestComponent(graph1, 0, new ProgressLogger()));
-		degreeCentrality degreecent = new degreeCentrality();
-		
-		System.out.println("Degree Centrality of graph:"+ degreecent.computeDegreeCentrality(graph1));
-		
+		intermediationCentrality inter = new intermediationCentrality();
+		inter.computeIntermediationCentrality(graph1);
+		System.out.println("MAX="+inter.manageIntermediationCentrality(inter.computeIntermediationCentrality(graph1)));
 	}
 
 }
