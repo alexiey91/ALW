@@ -3,9 +3,8 @@ package it.uniroma2.algoritmi.web;
 import it.unimi.dsi.logging.ProgressLogger;
 import it.unimi.dsi.webgraph.ArcListASCIIGraph;
 import it.unimi.dsi.webgraph.ImmutableGraph;
-import it.unimi.dsi.webgraph.ImmutableSubgraph;
+import it.unimi.dsi.webgraph.Stats;
 import it.unimi.dsi.webgraph.algo.ConnectedComponents;
-import it.unimi.dsi.webgraph.algo.NeighbourhoodFunction;
 import it.unimi.dsi.webgraph.algo.ParallelBreadthFirstVisit;
 import it.unimi.dsi.webgraph.algo.StronglyConnectedComponents;
 
@@ -87,9 +86,14 @@ public class componentiConnesse {
 //		
 //		System.out.println("Degree Centrality of graph:"+ degreecent.computeDegreeCentrality(graph1));
 	
-		intermediationCentrality inter = new intermediationCentrality();
+	/*	intermediationCentrality inter = new intermediationCentrality();
 		inter.computeIntermediationCentrality(graph1);
 		System.out.println("MAX="+inter.manageIntermediationCentrality(inter.computeIntermediationCentrality(graph1)));
+	*/
+	//Stats.run(graph1, null, null, "test", new ProgressLogger());
+	pageRankCentrality page = new pageRankCentrality();
+	
+	System.out.println("Indice di autovettore:"+page.getPageRankIntex(page.computePageRankCentrality(graph1)));
 	}
 
 }

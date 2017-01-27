@@ -58,9 +58,7 @@ public double manageIntermediationCentrality(List<Double> list){
 	public List<successorObject> listOfSuccessor(ImmutableGraph graph){
 		List<successorObject> successor = new ArrayList<successorObject>();
 	
-		List<Integer> test= new ArrayList<Integer>();
-	
-		
+				
 		for(int i=0 ; i< graph.numNodes();i++){
 			//LazyIntIterator successors = graph.successors( i );
 			 successorObject temp = new successorObject();
@@ -79,4 +77,8 @@ public double manageIntermediationCentrality(List<Double> list){
 		
 		return successor;
 	}
+	
+	
+	
+	
 }
