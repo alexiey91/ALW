@@ -5,6 +5,7 @@ import it.unimi.dsi.webgraph.ArcListASCIIGraph;
 import it.unimi.dsi.webgraph.ImmutableGraph;
 import it.unimi.dsi.webgraph.Stats;
 import it.unimi.dsi.webgraph.algo.ConnectedComponents;
+import it.unimi.dsi.webgraph.algo.NeighbourhoodFunction;
 import it.unimi.dsi.webgraph.algo.ParallelBreadthFirstVisit;
 import it.unimi.dsi.webgraph.algo.StronglyConnectedComponents;
 
@@ -58,10 +59,10 @@ public class componentiConnesse {
 		 }
 		
 		
-//		 List<Double> ListOfneighbourdhood = new ArrayList<Double>();
-//		 neighbourhood prova = new neighbourhood();
-//		 ListOfneighbourdhood = prova.computeNeighbour(graph1, 10);
-//		 System.out.println("Lista vicinanza: "+ListOfneighbourdhood);
+	//	 List<Double> ListOfneighbourdhood = new ArrayList<Double>();
+	//	 neighbourhood prova = new neighbourhood();
+	//	 ListOfneighbourdhood = prova.computeNeighbour(graph1, 10);
+	//	 System.out.println("Lista vicinanza: "+ListOfneighbourdhood);
 //		 diameter d = new diameter();
 //		 double diameter = d.effectiveDiamete(0.9, ListOfneighbourdhood);
 //		 System.out.println("effective diameter: "+ diameter);
@@ -77,23 +78,39 @@ public class componentiConnesse {
 //	
 //	System.out.println("Set Of Closeness: "+closeness.computeCloseness(graph1));
 //		
-	betweenness between = new betweenness();
-		System.out.println("List of betweenness: "+ between.computeBetweenness(graph1));
-		System.out.println("List of normalized betweenness: "+between.normalize(between.computeBetweenness(graph1),nodi));
+//	betweenness between = new betweenness();
+//		System.out.println("List of betweenness: "+ between.computeBetweenness(graph1));
+//		System.out.println("List of normalized betweenness: "+between.normalize(between.computeBetweenness(graph1),nodi));
 //	
 //		//System.out.println("elenco:"+ConnectedComponents.getLargestComponent(graph1, 0, new ProgressLogger()));
 //		degreeCentrality degreecent = new degreeCentrality();
 //		
 //		System.out.println("Degree Centrality of graph:"+ degreecent.computeDegreeCentrality(graph1));
 	
-	/*	intermediationCentrality inter = new intermediationCentrality();
-		inter.computeIntermediationCentrality(graph1);
-		System.out.println("MAX="+inter.manageIntermediationCentrality(inter.computeIntermediationCentrality(graph1)));
-	*/
-	//Stats.run(graph1, null, null, "test", new ProgressLogger());
-	pageRankCentrality page = new pageRankCentrality();
+//		intermediationCentrality inter = new intermediationCentrality();
+//  	inter.computeIntermediationCentrality(graph1);
+//		System.out.println("MAX="+inter.manageIntermediationCentrality(inter.computeIntermediationCentrality(graph1)));
 	
-	System.out.println("Indice di autovettore:"+page.getPageRankIntex(page.computePageRankCentrality(graph1)));
+	
+	/*pageRankCentrality page = new pageRankCentrality();
+	
+	System.out.println("Indice di autovettore:"+page.getPageRankIntex(page.computePageRankCentrality(graph1)));*/
+	
+//  clusteringIndex cluster = new clusteringIndex();
+//	for(int i=0 ; i<graph1.numNodes();i++)
+//	System.out.println("Per il nodo:"+i+" il valore di Clustering è pari a :"+cluster.clusterCoefficent(graph1, i));
+		
+//	System.out.println("L'indice di clustering è pari a:"+cluster.clusterIndex(graph1));
+	
+	
+		embeddednessIndex embe = new embeddednessIndex();
+		
+		System.out.println("embe:"+embe.computeEmbeddedness(graph1));
+	
+		
+		
 	}
+	
+	
 
 }

@@ -20,11 +20,11 @@ public class calcoloBridge {
 	private static List<Integer> Listanodi = new ArrayList<Integer>();
 
 	//private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\Kapferer-Tailor-Shop_Multiplex_Social\\Dataset\\TailorShop.edges";
-	//private static String path = "C:\\Users\\alessandro\\Desktop\\bridge.edges";
+	private static String path = "C:\\Users\\alessandro\\Desktop\\bridge.edges";
 	//private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\CKM-Physicians-Innovation_Multiplex_Social\\Dataset\\CKM.edges";
 	//private static String path ="C:\\Users\\alessandro\\Desktop\\ALW\\Lazega-Law-Firm_Multiplex_Social\\Dataset\\Lazega.edges";
 	//private static String path ="C:\\Users\\alessandro\\Desktop\\ALW\\Krackhardt-High-Tech_Multiplex_Social\\Dataset\\Krackhardt.edges";
-	private static String path = "C:\\Users\\alessandro\\Desktop\\simone.edges";
+	//private static String path = "C:\\Users\\alessandro\\Desktop\\clustering.edges";
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
