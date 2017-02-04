@@ -108,7 +108,8 @@ public class componentiConnesse {
 		System.out.println("embe:"+embe.computeEmbeddedness(graph1));
 	
 		
-		
+	 dispersionCentrality disp = new dispersionCentrality();
+	 System.out.println("disp:" +disp.dispersionCentrality(graph1));
 	}
 	
 	

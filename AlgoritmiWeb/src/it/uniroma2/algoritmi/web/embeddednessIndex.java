@@ -49,11 +49,11 @@ public class embeddednessIndex {
 		int counter = 0;
 		for(int i=0 ; i< start.length;i++){
 			for(int j=0 ; j< succ.length;j++){
-				System.out.println("start["+i+"]:"+start[i]+" =="+"succ["+j+"]:"+succ[j] );
+				//System.out.println("start["+i+"]:"+start[i]+" =="+"succ["+j+"]:"+succ[j] );
 				if(start[i]== succ[j] && node != succ[j])counter++;
 			}
 		}
-		System.out.println("counter"+counter);
+		//System.out.println("counter"+counter);
 		//emb.add(counter);
 		return counter;
 	}
