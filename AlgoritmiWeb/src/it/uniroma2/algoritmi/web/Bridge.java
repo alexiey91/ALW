@@ -16,97 +16,96 @@ import org.jgrapht.alg.KosarajuStrongConnectivityInspector;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 
-public class calcoloBridge {
+public class Bridge {
 	private static List<Integer> Listanodi = new ArrayList<Integer>();
 
 	//private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\Kapferer-Tailor-Shop_Multiplex_Social\\Dataset\\TailorShop.edges";
-	private static String path = "C:\\Users\\alessandro\\Desktop\\bridge.edges";
+	//private static String path = "C:\\Users\\alessandro\\Desktop\\bridge.edges";
 	//private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\CKM-Physicians-Innovation_Multiplex_Social\\Dataset\\CKM.edges";
 	//private static String path ="C:\\Users\\alessandro\\Desktop\\ALW\\Lazega-Law-Firm_Multiplex_Social\\Dataset\\Lazega.edges";
 	//private static String path ="C:\\Users\\alessandro\\Desktop\\ALW\\Krackhardt-High-Tech_Multiplex_Social\\Dataset\\Krackhardt.edges";
 	//private static String path = "C:\\Users\\alessandro\\Desktop\\clustering.edges";
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
+	private static String path = "C:\\Users\\alessandro\\Desktop\\wiener.edges";
 
-		BufferedReader br = null;
-		FileReader fr = null;
-		fr = new FileReader(path);
-		br = new BufferedReader(fr);
-
-		String sCurrentLine;
-		String temp;
-
-		br = new BufferedReader(new FileReader(path));
-		int countLine = 0;
-		while ((sCurrentLine = br.readLine()) != null) {
-			//System.out.println(sCurrentLine);
-			countLine = countLine + 1;
-			temp = sCurrentLine.replaceAll("[^0-9]+", " ");
-			//System.out.println(Arrays.asList(temp.trim().split(" ")));
-			for (String s : Arrays.asList(temp.trim().split(" ")))
-				Listanodi.add(Integer.valueOf(s));
-
-		}
-	//	System.out.println("ListaNodi:"+ Listanodi);
-
-		if (br != null)
-			br.close();
-
-		if (fr != null)
-			fr.close();
-		DirectedGraph<String, DefaultEdge> grafo = createStringGraph(Listanodi);
-		//System.out.println("grafo: " + grafo.toString());
-		ConnectivityInspector<String, DefaultEdge> inspector = new ConnectivityInspector<String, DefaultEdge>(
-				grafo);
-		
-		
-		KosarajuStrongConnectivityInspector<String,DefaultEdge>finder = new KosarajuStrongConnectivityInspector<String,DefaultEdge>( grafo);
-			
-		System.out.println("numero componenti connesse finder: "+	finder.stronglyConnectedSets().size());
-		int componentiConnesse = inspector.connectedSets().size();
-		System.out.println("numero componenti connesse inspector: "+componentiConnesse);
-
-		/*List<String> bridge = numberOfBridge(grafo, Listanodi,
-				finder.stronglyConnectedSets().size());*/
-		Date  prima = new Date();
-		List<String> weaklyBridge = numberOfWeaklyBridge(grafo, Listanodi,
-				componentiConnesse);
-		System.out.println("set of weak bridge :" + weaklyBridge);
-		Date dopo = new Date();
-		long timer = dopo.getTime()-prima.getTime();
-		System.out.println("Tempo di esecuzione weak bridge: "+timer+"ms");
-		Date  primaStrong = new Date();
-		List<String> strongBridge =  numberStrongBridge(grafo, Listanodi,
-				finder.stronglyConnectedSets().size());
-		
-		System.out.println("set of strength bridge :" + strongBridge);
-		Date  dopoStrong = new Date();
-		long timerStrong = dopoStrong.getTime()-primaStrong.getTime();
-		System.out.println("Tempo di esecuzione strong bridge: "+ timerStrong+"ms");
-		
-		Date primaArtweak = new Date();
-		List<String> ArticulationPoint =  TestnumberOfWeaklyArticulationPoint(grafo, Listanodi,
-				componentiConnesse);
-		System.out.println("Numero di Punti di articolazione debole:"+ArticulationPoint);
-		Date dopoArtweak = new Date();
-		long timerArtweak = dopoArtweak.getTime()-primaArtweak.getTime();
-		System.out.println("Tempo di esecuzionw weak Articulation: "+timerArtweak+"ms");
-		Date primaArtstrong = new Date();
-		List<String> StrongArticulationPoint =  TestnumberOfStrongArticulationPoint(grafo, Listanodi,
-				finder.stronglyConnectedSets().size());
-		System.out.println("Numero di Punti di articolazione debole:"+StrongArticulationPoint);
-		Date dopoArtstrong = new Date();
-		long timerArtstrong = dopoArtstrong.getTime()-primaArtstrong.getTime();
-		System.out.println("Tempo di esecuzione strong Articulation Point: "+ timerArtstrong+"ms");
-		
-		
-		
-		
-		
+	public Bridge() {
 		
 	}
+//	
+//	public static void main(String[] args) throws IOException {
+//		// TODO Auto-generated method stub
+//
+//		BufferedReader br = null;
+//		FileReader fr = null;
+//		fr = new FileReader(path);
+//		br = new BufferedReader(fr);
+//
+//		String sCurrentLine;
+//		String temp;
+//
+//		br = new BufferedReader(new FileReader(path));
+//		int countLine = 0;
+//		while ((sCurrentLine = br.readLine()) != null) {
+//			countLine = countLine + 1;
+//			temp = sCurrentLine.replaceAll("[^0-9]+", " ");
+//			for (String s : Arrays.asList(temp.trim().split(" ")))
+//				Listanodi.add(Integer.valueOf(s));
+//
+//		}
+//
+//		if (br != null)
+//			br.close();
+//
+//		if (fr != null)
+//			fr.close();
+//		DirectedGraph<String, DefaultEdge> grafo = createStringGraph(Listanodi);
+//		ConnectivityInspector<String, DefaultEdge> inspector = new ConnectivityInspector<String, DefaultEdge>(
+//				grafo);
+//		
+//		
+//		KosarajuStrongConnectivityInspector<String,DefaultEdge>finder = new KosarajuStrongConnectivityInspector<String,DefaultEdge>( grafo);
+//			
+//		System.out.println("numero componenti connesse finder: "+	finder.stronglyConnectedSets().size());
+//		int componentiConnesse = inspector.connectedSets().size();
+//		System.out.println("numero componenti connesse inspector: "+componentiConnesse);
+//
+//		
+//		Date  prima = new Date();
+//		List<String> weaklyBridge = numberOfWeaklyBridge(grafo, Listanodi,
+//				componentiConnesse);
+//		System.out.println("set of weak bridge :" + weaklyBridge);
+//		Date dopo = new Date();
+//		long timer = dopo.getTime()-prima.getTime();
+//		System.out.println("Tempo di esecuzione weak bridge: "+timer+"ms");
+//		Date  primaStrong = new Date();
+//		List<String> strongBridge =  numberStrongBridge(grafo, Listanodi,
+//				finder.stronglyConnectedSets().size());
+//		
+//		System.out.println("set of strength bridge :" + strongBridge);
+//		Date  dopoStrong = new Date();
+//		long timerStrong = dopoStrong.getTime()-primaStrong.getTime();
+//		System.out.println("Tempo di esecuzione strong bridge: "+ timerStrong+"ms");
+//		
+//		Date primaArtweak = new Date();
+//		List<String> ArticulationPoint =  TestnumberOfWeaklyArticulationPoint(grafo, Listanodi,
+//				componentiConnesse);
+//		System.out.println("Numero di Punti di articolazione debole:"+ArticulationPoint);
+//		Date dopoArtweak = new Date();
+//		long timerArtweak = dopoArtweak.getTime()-primaArtweak.getTime();
+//		System.out.println("Tempo di esecuzionw weak Articulation: "+timerArtweak+"ms");
+//		Date primaArtstrong = new Date();
+//		List<String> StrongArticulationPoint =  TestnumberOfStrongArticulationPoint(grafo, Listanodi,
+//				finder.stronglyConnectedSets().size());
+//		System.out.println("Numero di Punti di articolazione debole:"+StrongArticulationPoint);
+//		Date dopoArtstrong = new Date();
+//		long timerArtstrong = dopoArtstrong.getTime()-primaArtstrong.getTime();
+//		System.out.println("Tempo di esecuzione strong Articulation Point: "+ timerArtstrong+"ms");
+//		
+//		
+//		
+//	
+//	}
 
-	private static List<String> numberOfWeaklyBridge(
+	public static List<String> numberOfWeaklyBridge(
 			DirectedGraph<String, DefaultEdge> grafo, List<Integer> nodi,
 			int start_componentiConnesse) {
 		List<String> setOfBridge = new ArrayList<String>();
@@ -151,7 +150,7 @@ public class calcoloBridge {
 		return setOfBridge;
 	}
 	
-	private static List<String> numberStrongBridge(
+	public static List<String> numberStrongBridge(
 			DirectedGraph<String, DefaultEdge> grafo, List<Integer> nodi,
 			int start_componentiConnesse) {
 		List<String> setOfBridge = new ArrayList<String>();
@@ -197,57 +196,6 @@ public class calcoloBridge {
 	}
 
 	
-//	private static List<String> numberOfWeaklyArticulationPoint(
-//			DirectedGraph<String, DefaultEdge> grafo, List<Integer> nodi,
-//			int start_componentiConnesse) {
-//		
-//		List<String> setOfArticulationPoint = new ArrayList<String>();
-//		
-//		String probablyPoint;
-//		
-//		nodi = new ArrayList<Integer>(new HashSet<Integer>(nodi));
-//		
-//		DirectedGraph<String, DefaultEdge> tempo = new DefaultDirectedGraph<String, DefaultEdge>(
-//				DefaultEdge.class);
-//		
-//		for(int i=0 ; i< nodi.size();i++){
-//		//	System.out.println("Grafo prima del for: "+grafo);
-//		//	System.out.println("Vertice : "+nodi.get(i).toString());
-//			tempo = grafo;
-//		//	System.out.println("Temp prima del for: "+tempo);
-//			if(tempo.containsVertex(nodi.get(i).toString())){
-//				probablyPoint= nodi.get(i).toString();
-//				
-//				
-//				tempo.removeVertex(nodi.get(i).toString());
-//
-//				ConnectivityInspector<String, DefaultEdge> inspector = new ConnectivityInspector<String, DefaultEdge>(
-//						tempo);
-//			//	System.out.println("GRAFO Temp senza Nodo: " + tempo );
-//		
-//				
-//			//	System.out.println("Lista COMPONENTI CONNESSE senza Il Vertice rimosso :"+ inspector.connectedSets());
-//			//		System.out.println("# componenti connesse:"+ inspector.connectedSets().size());
-//				if (inspector.connectedSets().size() > start_componentiConnesse) {
-//					tempo =grafo;
-//					//grafo.addVertex(nodi.get(i).toString());
-//					/*System.out.println("GRAFO con Nodo RIaggiunto: "
-//							+ grafo);*/
-//					
-//		//			System.out.println("dentro if 2: "	+ inspector.connectedSets().size());
-//					setOfArticulationPoint.add(probablyPoint);
-//				}else {//System.out.println("No Articolation point at position:"+i);
-//					tempo= new  DefaultDirectedGraph<String, DefaultEdge>(
-//							DefaultEdge.class);
-//					//System.out.println("TEMP:"+tempo);
-//					}
-//			}
-//
-//			
-//			}
-//		
-//			
-//		return setOfArticulationPoint;	}
 
 	
 	
