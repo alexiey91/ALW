@@ -1,6 +1,8 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.index;
 
 import it.unimi.dsi.webgraph.ImmutableGraph;
+import it.uniroma2.algoritmi.web.utils.Utils;
+import it.uniroma2.algoritmi.web.utils.successorObject;
 
 import java.util.ArrayList;
 import java.util.List;

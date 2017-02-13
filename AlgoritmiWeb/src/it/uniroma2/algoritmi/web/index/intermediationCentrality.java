@@ -1,8 +1,9 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.index;
 
 import it.unimi.dsi.webgraph.ImmutableGraph;
 import it.unimi.dsi.webgraph.LazyIntIterator;
 import it.unimi.dsi.webgraph.NodeIterator;
+import it.uniroma2.algoritmi.web.utils.successorObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class intermediationCentrality {
 			else listIntermediation.add(i,0.0);
 		}
 			
-		System.out.println("listIntermedition: "+listIntermediation);
+	//	System.out.println("listIntermedition: "+listIntermediation);
 		
 		return listIntermediation;
 	}
@@ -62,10 +63,10 @@ public double manageIntermediationCentrality(List<Double> list){
 		for(int i=0 ; i< graph.numNodes();i++){
 			//LazyIntIterator successors = graph.successors( i );
 			 successorObject temp = new successorObject();
-			System.out.println("graph.successors per il nodo ["+i+"] ="+graph.successorArray(i));
+		//	System.out.println("graph.successors per il nodo ["+i+"] ="+graph.successorArray(i));
 			int [] x = new int[graph.successorArray(i).length];
 			x=graph.successorArray(i);
-			for(int j=0 ; j< graph.successorArray(i).length;j++)System.out.println("x["+j+"] "+x[j]);
+		//	for(int j=0 ; j< graph.successorArray(i).length;j++)System.out.println("x["+j+"] "+x[j]);
 
 			
 			 temp.setNode(i);

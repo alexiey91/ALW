@@ -1,4 +1,4 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.simplemetrics;
 
 import it.unimi.dsi.logging.ProgressLogger;
 import it.unimi.dsi.webgraph.ArcListASCIIGraph;

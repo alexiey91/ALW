@@ -5,6 +5,18 @@ import it.unimi.dsi.webgraph.ArcListASCIIGraph;
 import it.unimi.dsi.webgraph.ImmutableGraph;
 import it.unimi.dsi.webgraph.algo.NeighbourhoodFunction;
 import it.unimi.dsi.webgraph.algo.ParallelBreadthFirstVisit;
+import it.uniroma2.algoritmi.web.index.betweenness;
+import it.uniroma2.algoritmi.web.index.closeness;
+import it.uniroma2.algoritmi.web.index.clusteringIndex;
+import it.uniroma2.algoritmi.web.index.degreeCentrality;
+import it.uniroma2.algoritmi.web.index.dispersionCentrality;
+import it.uniroma2.algoritmi.web.index.embeddednessIndex;
+import it.uniroma2.algoritmi.web.index.pageRankCentrality;
+import it.uniroma2.algoritmi.web.simplemetrics.Bridge;
+import it.uniroma2.algoritmi.web.simplemetrics.articulationPoint;
+import it.uniroma2.algoritmi.web.simplemetrics.componentiConnesse;
+import it.uniroma2.algoritmi.web.simplemetrics.diameter;
+import it.uniroma2.algoritmi.web.simplemetrics.neighbourhood;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -33,12 +45,42 @@ public class main {
 
 		String fileName = new File(arg[0]).getName();
 	 final String path = "C:\\Users\\alessandro\\Desktop\\testing\\"+fileName+".txt";
-		double archi, nodi,densità;
+
+	 File file = new File(path);
+	 
+	 
+	 double archi, nodi,densità;
 
 		ImmutableGraph graph1 = ArcListASCIIGraph.loadOffline(arg[0]);
+			
+			if(file.exists()){
+				System.out.println("dentro if");
+				BufferedWriter bw = null;
+					FileWriter fw = null;
+					fw = new FileWriter(file.getAbsoluteFile(), true);
+					bw = new BufferedWriter(fw);
+					 dispersionCentrality disp = new dispersionCentrality();
+					 Date primaDisp = new Date();
+						bw.write("Dispersion Index:" +disp.dispersionCentrality(graph1)+" tempo di esecuzione: ");
+						Date dopoDisp = new Date();
+						bw.write(dopoDisp.getTime()-primaDisp.getTime()+" ms \r\n");
+					
+//					 embeddednessIndex embe = new embeddednessIndex();	
+//
+//					 Date primaEmb = new Date();
+//						bw.write("Embeddedness Index: "+embe.computeEmbeddedness(graph1)+" tempo di esecuzione: ");
+//						Date dopoEmb = new Date();
+//						bw.write(dopoEmb.getTime()-primaEmb.getTime()+" ms \r\n");
+						 System.out.println("DONE");
+					bw.close();
+					
+					 
+					
+			}
+			
+			else{
 			archi=graph1.numArcs();
 			nodi =graph1.numNodes();
-		
 			densità = archi/(nodi*(nodi-1));
 			
 		BufferedReader br = null;
@@ -119,6 +161,8 @@ public class main {
 
 
 			fw = new FileWriter(path);
+			
+						
 			bw = new BufferedWriter(fw);
 			
 			
@@ -147,6 +191,7 @@ public class main {
 			 Date primaWBridge = new Date();
 			 bw.write("WeakBridge: "+weaklyBridge+" tempo di esecuzione: ");
 			 Date dopoWBridge = new Date();
+			 
 			bw.write(dopoWBridge.getTime()-primaWBridge.getTime()+" ms \r\n");
 			
 			Date primaSBridge = new Date();
@@ -231,6 +276,7 @@ public class main {
 
 			}
 
+		}
 		}
 	}
 	//Creo il grafo diretto a partire dalla lista dei nodi

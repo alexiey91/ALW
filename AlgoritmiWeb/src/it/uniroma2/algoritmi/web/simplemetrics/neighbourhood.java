@@ -1,4 +1,4 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.simplemetrics;
 
 import it.unimi.dsi.logging.ProgressLogger;
 import it.unimi.dsi.webgraph.ImmutableGraph;
@@ -16,9 +16,9 @@ public class neighbourhood {
 	}
 
 	public List<Double> computeNeighbour(ImmutableGraph graph,int numberOfRegister) throws IOException{
-		 @SuppressWarnings("unused")
+		// @SuppressWarnings("unused")
 		int rand = (int)(Math.random()*10);
-		 @SuppressWarnings("resource")
+	//	 @SuppressWarnings("resource")
 		HyperBall ball = new HyperBall(graph, Transform.transpose(graph),20, new ProgressLogger(),0,0,0,false);
 	//	ball.init();
 		 ball.run(graph.numNodes());

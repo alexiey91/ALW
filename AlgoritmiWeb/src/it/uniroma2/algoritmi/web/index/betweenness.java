@@ -1,4 +1,4 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.index;
 
 import it.unimi.dsi.logging.ProgressLogger;
 import it.unimi.dsi.webgraph.ArrayListMutableGraph;
@@ -31,9 +31,9 @@ public class betweenness {
 	public List<Double> elaborate(List<Double> centrality){
 		List <Double> test = new ArrayList<Double>();
 		double min = Min(centrality);
-		System.out.println("MIN:"+min);
+	//	System.out.println("MIN:"+min);
 		double max = Max(centrality);
-		System.out.println("MAX:"+max);
+	//	System.out.println("MAX:"+max);
 		for(int i =0 ; i< centrality.size();i++){
 		
 			test.add((centrality.get(i)-min)/(max-centrality.get(i)));

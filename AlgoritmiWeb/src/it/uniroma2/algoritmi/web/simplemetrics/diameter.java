@@ -1,4 +1,4 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.simplemetrics;
 
 import java.util.List;
 

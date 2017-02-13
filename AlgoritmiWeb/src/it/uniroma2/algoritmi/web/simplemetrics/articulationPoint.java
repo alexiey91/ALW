@@ -1,4 +1,4 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.simplemetrics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,7 +45,7 @@ public class articulationPoint {
 			//	System.out.println("inspector:"+inspector.connectedSets());
 				if (inspector.connectedSets().size() > start_componentiConnesse) {
 			//	System.out.println("dentro if ispector at time: "+i);
-					System.out.println("True wealpoint position:"+i);
+			//		System.out.println("True wealpoint position:"+i);
 					grafo.addVertex(probablyPoint);
 					for(int j=0; j< ListofEdges.size();j++){
 						if(j%2!=0){
@@ -109,7 +109,7 @@ public class articulationPoint {
 			//	System.out.println("finder:"+finder.stronglyConnectedSets());
 				if (finder.stronglyConnectedSets().size() > start_componentiConnesse) {
 			//	System.out.println("dentro if finder at time: "+i);
-					System.out.println("True strongpoint position:"+i);
+				//	System.out.println("True strongpoint position:"+i);
 					grafo.addVertex(probablyPoint);
 					for(int j=0; j< ListofEdges.size();j++){
 						if(j%2!=0){

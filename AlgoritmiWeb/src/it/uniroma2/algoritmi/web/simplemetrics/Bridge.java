@@ -1,4 +1,4 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.simplemetrics;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,13 +19,7 @@ import org.jgrapht.graph.DefaultEdge;
 public class Bridge {
 	private static List<Integer> Listanodi = new ArrayList<Integer>();
 
-	//private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\Kapferer-Tailor-Shop_Multiplex_Social\\Dataset\\TailorShop.edges";
-	//private static String path = "C:\\Users\\alessandro\\Desktop\\bridge.edges";
-	//private static String path = "C:\\Users\\alessandro\\Desktop\\ALW\\CKM-Physicians-Innovation_Multiplex_Social\\Dataset\\CKM.edges";
-	//private static String path ="C:\\Users\\alessandro\\Desktop\\ALW\\Lazega-Law-Firm_Multiplex_Social\\Dataset\\Lazega.edges";
-	//private static String path ="C:\\Users\\alessandro\\Desktop\\ALW\\Krackhardt-High-Tech_Multiplex_Social\\Dataset\\Krackhardt.edges";
-	//private static String path = "C:\\Users\\alessandro\\Desktop\\clustering.edges";
-	private static String path = "C:\\Users\\alessandro\\Desktop\\wiener.edges";
+	
 
 	public Bridge() {
 		
@@ -131,7 +125,7 @@ public class Bridge {
 				//	System.out.println("Lista COMPONENTI CONNESSE:"+ inspector.connectedSets());
 				//		System.out.println("# componenti connesse:"+ inspector.connectedSets().size());
 					if (inspector.connectedSets().size() > start_componentiConnesse) {
-						System.out.println("True weakbridge position:"+i);
+				//		System.out.println("True weakbridge position:"+i);
 						grafo.addEdge(nodi.get(i).toString(), nodi.get(j)
 								.toString());
 					/*	System.out.println("GRAFO con Nodo RIaggiunto: "
@@ -176,7 +170,7 @@ public class Bridge {
 					
 					
 						if (finder.stronglyConnectedSets().size() > start_componentiConnesse) {
-							System.out.println("True strongbridge position:"+i);
+			//				System.out.println("True strongbridge position:"+i);
 						grafo.addEdge(nodi.get(i).toString(), nodi.get(j)
 								.toString());
 					/*	System.out.println("GRAFO con Nodo RIaggiunto: "
@@ -228,7 +222,7 @@ public class Bridge {
 			//	System.out.println("inspector:"+inspector.connectedSets());
 				if (inspector.connectedSets().size() > start_componentiConnesse) {
 			//	System.out.println("dentro if ispector at time: "+i);
-					System.out.println("True wealpoint position:"+i);
+				//	System.out.println("True wealpoint position:"+i);
 					grafo.addVertex(probablyPoint);
 					for(int j=0; j< ListofEdges.size();j++){
 						if(j%2!=0){
@@ -292,7 +286,7 @@ public class Bridge {
 			//	System.out.println("finder:"+finder.stronglyConnectedSets());
 				if (finder.stronglyConnectedSets().size() > start_componentiConnesse) {
 			//	System.out.println("dentro if finder at time: "+i);
-					System.out.println("True strongpoint position:"+i);
+			//		System.out.println("True strongpoint position:"+i);
 					grafo.addVertex(probablyPoint);
 					for(int j=0; j< ListofEdges.size();j++){
 						if(j%2!=0){

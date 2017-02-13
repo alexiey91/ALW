@@ -1,6 +1,8 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.index;
 
 import it.unimi.dsi.webgraph.ImmutableGraph;
+import it.uniroma2.algoritmi.web.utils.predecessorObject;
+import it.uniroma2.algoritmi.web.utils.successorObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +21,8 @@ public class pageRankCentrality {
 		succ= inter.listOfSuccessor(graph);
 		List<predecessorObject> pred = new ArrayList<predecessorObject>();
 		pred=listOfPredecessor(graph);
-		for(int i=0 ; i< pred.size();i++)
-		System.out.println("predeccessori del nodo"+pred.get(i).getNode()+"sono: "+pred.get(i).getPredecessor());
+	//	for(int i=0 ; i< pred.size();i++)
+	//	System.out.println("predeccessori del nodo"+pred.get(i).getNode()+"sono: "+pred.get(i).getPredecessor());
 		//Passo 1 imposto tutte le pagine ad un valore iniziale 1 - d/ N dove d= 0.85 
 		List<Double> initialRank = new ArrayList<Double>();
 		double d = 0.85;
@@ -67,8 +69,9 @@ public class pageRankCentrality {
 		List<successorObject> successor = new ArrayList<successorObject>();
 		intermediationCentrality inter = new intermediationCentrality();
 		successor=inter.listOfSuccessor(graph);
-		System.out.println("primo for");
-		for ( int i=0 ; i< successor.size();i++){
+
+		
+	for ( int i=0 ; i< successor.size();i++){
 			
 			predecessorObject temp = new predecessorObject();
 			temp.setNode(successor.get(i).getNode());

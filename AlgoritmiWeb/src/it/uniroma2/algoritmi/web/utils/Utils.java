@@ -1,6 +1,7 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.utils;
 
 import it.unimi.dsi.webgraph.ImmutableGraph;
+import it.uniroma2.algoritmi.web.index.intermediationCentrality;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +20,26 @@ public class Utils {
 		for(int i=0 ; i< graph.numNodes();i++){
 			//LazyIntIterator successors = graph.successors( i );
 			 successorObject temp = new successorObject();
-			System.out.println("graph.successors per il nodo ["+i+"] ="+graph.successorArray(i));
+			//System.out.println("graph.successors per il nodo ["+i+"] ="+graph.successorArray(i));
 			int [] x = new int[graph.successorArray(i).length];
 			x=graph.successorArray(i);
-			for(int j=0 ; j< graph.successorArray(i).length;j++)System.out.println("x["+j+"] "+x[j]);
+			List<Integer> app = new ArrayList<Integer>();
+			int last=x[0];
+			app.add(x[0]);
+			for(int j=0 ; j< x.length;j++){
+				if(j!=0 && x[j]!=last){
+				last= x[j];
+					app.add(x[j]);
+				}
+			}
+			System.out.println("lista senza duplicati:"+app);
+			int [] y = new int[app.size()];
+			for( int j =0 ; j< app.size();j++) y[j]=app.get(j);
+		//	for(int j=0 ; j< graph.successorArray(i).length;j++)System.out.println("x["+j+"] "+x[j]);
 
 			
 			 temp.setNode(i);
-			 temp.setsuccessor(x);
+			 temp.setsuccessor(y);
 			 successor.add(temp);
 		}
 		
@@ -40,7 +53,6 @@ public class Utils {
 		List<successorObject> successor = new ArrayList<successorObject>();
 		intermediationCentrality inter = new intermediationCentrality();
 		successor=inter.listOfSuccessor(graph);
-		System.out.println("primo for");
 		for ( int i=0 ; i< successor.size();i++){
 			
 			predecessorObject temp = new predecessorObject();

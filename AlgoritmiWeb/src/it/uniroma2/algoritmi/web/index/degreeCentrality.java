@@ -1,4 +1,4 @@
-package it.uniroma2.algoritmi.web;
+package it.uniroma2.algoritmi.web.index;
 
 import org.jgrapht.event.ConnectedComponentTraversalEvent;
 
@@ -16,7 +16,7 @@ public class degreeCentrality {
 		double degreeCentrality =0;
 		double sum=0;
 		int maxGraphDegree = maxDegree(graph);
-		System.out.println("maxDegree:"+maxGraphDegree);
+	//	System.out.println("maxDegree:"+maxGraphDegree);
 		double denominator = 0;
 		//denominator= computeDegreeSubgraph(graph);
 		denominator = (graph.numNodes()-1)*(graph.numNodes()-2);
@@ -25,8 +25,8 @@ public class degreeCentrality {
 			sum=sum + (maxGraphDegree - graph.outdegree(i));
 			//System.out.println("sum in position["+i+"]= " +maxGraphDegree+"-"+graph.outdegree(i)+"="+sum);
 		}
-		System.out.println("SUM:"+sum);
-		System.out.println("Denominator:"+denominator);
+	//	System.out.println("SUM:"+sum);
+	//	System.out.println("Denominator:"+denominator);
 	degreeCentrality= sum/denominator;
 		return degreeCentrality;
 		
@@ -39,9 +39,9 @@ public class degreeCentrality {
 	//System.out.println(ConnectedComponents.compute(graph, 0, null).numberOfComponents);
 	//System.out.println(ConnectedComponents.compute(graph, 0, null).component[36]);
 		ImmutableGraph maximumSubgraph= ConnectedComponents.getLargestComponent(graph, 0, null);
-	System.out.println("maximumSubgraph:"+maximumSubgraph);
+	//System.out.println("maximumSubgraph:"+maximumSubgraph);
 		int maxSubGraphDegree = maxDegree(maximumSubgraph);
-		System.out.println("maximumSubgraph degree:"+maxSubGraphDegree);
+	//	System.out.println("maximumSubgraph degree:"+maxSubGraphDegree);
 	for ( int i=0 ; i< maximumSubgraph.numNodes();i++){
 			sum = sum + (maxSubGraphDegree-maximumSubgraph.outdegree(i));
 		}
