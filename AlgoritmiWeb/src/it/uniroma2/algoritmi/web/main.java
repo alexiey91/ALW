@@ -14,9 +14,11 @@ import it.uniroma2.algoritmi.web.index.embeddednessIndex;
 import it.uniroma2.algoritmi.web.index.pageRankCentrality;
 import it.uniroma2.algoritmi.web.simplemetrics.Bridge;
 import it.uniroma2.algoritmi.web.simplemetrics.articulationPoint;
+import it.uniroma2.algoritmi.web.simplemetrics.center;
 import it.uniroma2.algoritmi.web.simplemetrics.componentiConnesse;
 import it.uniroma2.algoritmi.web.simplemetrics.diameter;
 import it.uniroma2.algoritmi.web.simplemetrics.neighbourhood;
+import it.uniroma2.algoritmi.web.utils.deleteDuplicate;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -44,7 +46,7 @@ public class main {
 		// TODO Auto-generated method stub
 
 		String fileName = new File(arg[0]).getName();
-	 final String path = "C:\\Users\\alessandro\\Desktop\\testing\\"+fileName+".txt";
+	 final String path = "C:\\Users\\alessandro\\Desktop\\Test\\"+fileName+".txt";
 
 	 File file = new File(path);
 	 
@@ -54,27 +56,40 @@ public class main {
 		ImmutableGraph graph1 = ArcListASCIIGraph.loadOffline(arg[0]);
 			
 			if(file.exists()){
-				System.out.println("dentro if");
+			System.out.println("dentro if");
 				BufferedWriter bw = null;
 					FileWriter fw = null;
 					fw = new FileWriter(file.getAbsoluteFile(), true);
 					bw = new BufferedWriter(fw);
-					 dispersionCentrality disp = new dispersionCentrality();
-					 Date primaDisp = new Date();
-						bw.write("Dispersion Index:" +disp.dispersionCentrality(graph1)+" tempo di esecuzione: ");
-						Date dopoDisp = new Date();
-						bw.write(dopoDisp.getTime()-primaDisp.getTime()+" ms \r\n");
-					
+//					 dispersionCentrality disp = new dispersionCentrality();
+//					 Date primaDisp = new Date();
+//						bw.write("Dispersion Index:" +disp.dispersionCentrality(graph1)+" tempo di esecuzione: ");
+//						Date dopoDisp = new Date();
+//						bw.write(dopoDisp.getTime()-primaDisp.getTime()+" ms \r\n");
+//					
 //					 embeddednessIndex embe = new embeddednessIndex();	
 //
 //					 Date primaEmb = new Date();
 //						bw.write("Embeddedness Index: "+embe.computeEmbeddedness(graph1)+" tempo di esecuzione: ");
 //						Date dopoEmb = new Date();
 //						bw.write(dopoEmb.getTime()-primaEmb.getTime()+" ms \r\n");
-						 System.out.println("DONE");
-					bw.close();
 					
-					 
+//					degreeCentrality degree = new degreeCentrality();
+//					Date primaDegree = new Date();
+//					bw.write("Index Degree centrality node: "+degree.computeNodeDegree(graph1)+" tempo dis esecuzione: ");
+//					Date dopoDegree = new Date();
+//					bw.write(dopoDegree.getTime()-primaDegree.getTime()+" ms \r\n");
+//				
+//					center cent = new center();
+//					Date primaCenter = new Date();
+//					bw.write("Center of Graph: "+ cent.getcenter(graph1)+" tempo di esecuzione: ");
+//					Date dopoCenter = new Date();
+//					bw.write(dopoCenter.getTime()-primaCenter.getTime()+" ms \r\n");
+//					System.out.println("DONE");
+//					bw.close();
+					
+					 deleteDuplicate delete = new deleteDuplicate();
+					 delete.stripDuplicatesFromFile(arg[0]);
 					
 			}
 			
@@ -140,6 +155,8 @@ public class main {
 		 neighbourhood prova = new neighbourhood();
 		 ListOfneighbourdhood = prova.computeNeighbour(graph1, 10);
 		
+		center cent = new center();
+		 
 		 diameter d = new diameter();
 		 double diameter = d.effectiveDiamete(0.9, ListOfneighbourdhood);
 		
@@ -184,6 +201,10 @@ public class main {
 			 }
 			 
 			 bw.write("Lista vicinanza: "+ListOfneighbourdhood+"\r\n");
+			 Date primaCenter = new Date();
+				bw.write("Center of Graph: "+ cent.getcenter(graph1)+" tempo di esecuzione: ");
+				Date dopoCenter = new Date();
+				bw.write(dopoCenter.getTime()-primaCenter.getTime()+" ms \r\n");
 			 bw.write("effective diameter: "+ diameter+"\r\n");
 				for ( int i=0 ; i< x.length;i++)
 					 bw.write("visitati i nodi x["+i+"]: "+x[i]+"\r\n" );
@@ -230,6 +251,11 @@ public class main {
 				bw.write("Index of degree:"+degree.computeDegreeCentrality(graph1)+"\r\n");
 				Date dopoDegree = new Date();
 				bw.write(dopoDegree.getTime()-primaDegree.getTime()+"ms \r\n");
+				
+				Date primaSDegree = new Date();
+				bw.write("Index Degree centrality node: "+degree.computeNodeDegree(graph1)+" tempo dis esecuzione: ");
+				Date dopoSDegree = new Date();
+				bw.write(dopoSDegree.getTime()-primaSDegree.getTime()+" ms \r\n");
 
 				Date primaPage = new Date();
 				bw.write("Indice di Autovettore:"+page.getPageRankIntex(page.computePageRankCentrality(graph1))+" tempo di esecuzione: ");

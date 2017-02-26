@@ -20,14 +20,14 @@ public class dispersionCentrality {
 		List<Integer> disp = new ArrayList<Integer>();
 		List<successorObject> succesorList = new ArrayList<successorObject>();
 		Utils util = new Utils();
-		succesorList = util.listOfSuccessor(graph); 
+		succesorList = util.listOfSuccessorSingle(graph); 
 
 		for(int i=0 ; i<succesorList.size(); i++ ){
 			for(int j=0 ; j< succesorList.get(i).getsuccessor().length;j++){
 				
 					List<Integer> temp = new ArrayList<Integer>();
 					temp= intersection(succesorList.get(i).getsuccessor(), succesorList.get(i).getNode(), succesorList.get(j).getsuccessor(), succesorList.get(j).getNode());
-				System.out.println("i="+i+" J="+j+" temp="+temp);
+				System.out.println("i="+i+" J="+j+" temp="+temp+" successorList"+succesorList.size());
 					disp.add(dis(temp, succesorList.get(i).getNode(),succesorList.get(j).getNode(),succesorList));
 			//	System.out.println("DIS: " +dis(temp, succesorList.get(i).getNode(),succesorList.get(j).getNode(),succesorList));
 				//	count++;
@@ -48,7 +48,7 @@ public class dispersionCentrality {
 		
 	for(int i=0 ; i< start.length; i++){
 		int temp = start[i];
-		System.out.println("start["+i+"]= "+temp+" start.size="+start.length);
+		//System.out.println("start["+i+"]= "+temp+" start.size="+start.length);
 		boolean contains = IntStream.of(next).anyMatch(x -> x == temp );
 		if(contains== true && temp != nodeStart && temp != nodeNext) matching.add(temp);
 		

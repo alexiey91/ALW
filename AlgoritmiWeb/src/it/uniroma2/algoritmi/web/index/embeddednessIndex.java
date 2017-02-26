@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import com.ctc.wstx.io.EBCDICCodec;
+
 
 public class embeddednessIndex {
 
@@ -22,7 +22,7 @@ public class embeddednessIndex {
 
 		List<successorObject> successorObj = new ArrayList<successorObject>();
 		Utils util = new Utils();
-		successorObj=util.listOfSuccessor(graph);		
+		successorObj=util.listOfSuccessorSingle(graph);		
 		int cont=0;
 		
 		for(int i=0 ; i< successorObj.size();i++){

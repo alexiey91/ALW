@@ -1,10 +1,11 @@
 package it.uniroma2.algoritmi.web.index;
 
-import org.jgrapht.event.ConnectedComponentTraversalEvent;
-
-import it.unimi.dsi.logging.ProgressLogger;
 import it.unimi.dsi.webgraph.ImmutableGraph;
+import it.unimi.dsi.webgraph.Transform;
 import it.unimi.dsi.webgraph.algo.ConnectedComponents;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class degreeCentrality {
 
@@ -55,4 +56,15 @@ public class degreeCentrality {
 		}
 		return max;
 	}
+	
+	public List<Integer> computeNodeDegree(ImmutableGraph graph){
+		List<Integer> degreeNode = new ArrayList<Integer>();
+	
+		ImmutableGraph graphT = Transform.transpose(graph);
+		
+		for(int i=0; i< graph.numNodes();i++){
+			degreeNode.add(graph.outdegree(i)+graphT.outdegree(i));
+		}
+		
+		return degreeNode;}
 }
